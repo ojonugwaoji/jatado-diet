@@ -1,8 +1,8 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
 from typing import List
-from ..common.schema import Name
-from ..common.types import PyObjectId
+from common.schema import Name
+from common.types import PyObjectId
 
 
 class Action(BaseModel):

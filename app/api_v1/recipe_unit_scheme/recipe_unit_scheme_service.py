@@ -1,7 +1,7 @@
 from bson.objectid import ObjectId
-from ..database import *
+from database import *
 from .recipe_unit_scheme_helper import deserialize_recipe_unit_scheme
-from ..database import get_recipe_unit_scheme_collection
+from database import get_recipe_unit_scheme_collection
 
 # Retrieve a recipe_unit_scheme with a matching ID
 

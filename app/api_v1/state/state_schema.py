@@ -1,7 +1,7 @@
 from datetime import datetime
 import strawberry
 from pydantic import BaseModel, Field
-from ..common.types import PyObjectId
+from common.types import PyObjectId
 
 
 @strawberry.type

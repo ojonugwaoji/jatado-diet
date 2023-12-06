@@ -1,11 +1,11 @@
 from typing import Annotated
 from fastapi import Depends, HTTPException
 from bson.objectid import ObjectId
-from ..database import *
+from database import *
 from .user_schema import User, Status, Role
 from .user_helper import deserialize_user
-from ..auth.auth_service import get_current_user, get_password_hash
-from ..database import get_database
+from auth.auth_service import get_current_user, get_password_hash
+from database import get_database
 
 
 async def get_current_active_user(

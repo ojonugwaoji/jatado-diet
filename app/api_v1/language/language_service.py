@@ -1,7 +1,7 @@
 from bson.objectid import ObjectId
-from ..database import *
+from database import *
 from .language_helper import deserialize_language
-from ..database import get_language_collection
+from database import get_language_collection
 
 
 # Retrieve a language with a matching ID

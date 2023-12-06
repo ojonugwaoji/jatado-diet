@@ -1,9 +1,9 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
 from typing import List
-from ..recipe_unit_scheme.recipe_unit_scheme_schema import RecipeUnitScheme
-from ..common.schema import Name
-from ..common.types import PyObjectId, Type
+from recipe_unit_scheme.recipe_unit_scheme_schema import RecipeUnitScheme
+from common.schema import Name
+from common.types import PyObjectId, Type
 
 
 class FoodItemAndQuantity(BaseModel):

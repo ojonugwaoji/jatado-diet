@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Body, Depends, status
-from ..common.schema import ResponseModel, ErrorResponseModel, ListQueryParams
-from ..common.serializer import serialize
-from ..common.services import retrieve_list
-from ..auth.auth_schema import OAuthTokenDeps
+from common.schema import ResponseModel, ErrorResponseModel, ListQueryParams
+from common.serializer import serialize
+from common.services import retrieve_list
+from auth.auth_schema import OAuthTokenDeps
 from .country_helper import deserialize_country
-from ..database import get_database, get_country_collection
+from database import get_database, get_country_collection
 
 from .country_service import (
     add_country,

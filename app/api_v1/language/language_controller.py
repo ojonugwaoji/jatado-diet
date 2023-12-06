@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Body, Depends, status
-from ..common.serializer import serialize
-from ..common.services import retrieve_list
-from ..database import get_language_collection, get_database
-from ..common.schema import ListQueryParams
-from ..common.schema import ResponseModel, ErrorResponseModel
+from common.serializer import serialize
+from common.services import retrieve_list
+from database import get_language_collection, get_database
+from common.schema import ListQueryParams
+from common.schema import ResponseModel, ErrorResponseModel
 from .language_helper import deserialize_language
-from ..auth.auth_schema import OAuthTokenDeps
+from auth.auth_schema import OAuthTokenDeps
 
 from .language_service import (
     add_language,

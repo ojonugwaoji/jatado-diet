@@ -1,7 +1,7 @@
 from bson.objectid import ObjectId
-from ..database import *
+from database import *
 from .recipe_quantity_helper import deserialize_recipe_quantity
-from ..database import get_recipe_quantity_collection
+from database import get_recipe_quantity_collection
 
 # Retrieve a recipe_quantity with a matching ID
 

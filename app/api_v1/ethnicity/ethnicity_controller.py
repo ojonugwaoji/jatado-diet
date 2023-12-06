@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Body, Depends, status
-from ..common.serializer import serialize
-from ..common.schema import ResponseModel, ErrorResponseModel
-from ..common.services import retrieve_list
-from ..common.schema import ListQueryParams
-from ..database import get_database, get_ethnicity_collection
+from common.serializer import serialize
+from common.schema import ResponseModel, ErrorResponseModel
+from common.services import retrieve_list
+from common.schema import ListQueryParams
+from database import get_database, get_ethnicity_collection
 from .ethnicity_helper import deserialize_ethnicity
-from ..auth.auth_schema import OAuthTokenDeps
+from auth.auth_schema import OAuthTokenDeps
 
 from .ethnicity_service import (
     add_ethnicity,

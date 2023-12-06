@@ -8,7 +8,7 @@ load_dotenv()
 
 class Settings(BaseSettings):
     app_name: str = "Jatado Diet"
-    admin_email: str = "efagenevalentine@gmail.com"
+    admin_email: str = "oji@jatado.com"
     pagination_limit: int = 15
     environment: str = str(os.getenv("ENV"))
     mongodb_dev_uri: str = str(os.getenv("MONGODB_DEV_URI"))
@@ -19,8 +19,9 @@ class Settings(BaseSettings):
     mongodb_test_db_name: str = str(os.getenv("MONGODB_TEST_DB_NAME"))
     secret_key: str = str(os.getenv("SECRET_KEY"))
     hashing_algorithm: str = str(os.getenv("ALGORITHM"))
-    token_expiration_minutes: str = str(
-        os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+    #token_expiration_minutes: str = str(
+     #   os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+    token_expiration_minutes: int = 30
 
 
 settings = Settings()

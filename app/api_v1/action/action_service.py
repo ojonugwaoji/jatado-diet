@@ -1,7 +1,7 @@
 from bson.objectid import ObjectId
-from ..database import *
+from database import *
 from .action_helper import deserialize_action
-from ..database import get_action_collection
+from database import get_action_collection
 
 # Retrieve a action with a matching ID
 

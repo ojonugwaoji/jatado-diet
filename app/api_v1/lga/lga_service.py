@@ -1,7 +1,7 @@
 from bson.objectid import ObjectId
-from ..database import *
+from database import *
 from .lga_helper import deserialize_lga
-from ..database import get_lga_collection
+from database import get_lga_collection
 
 # Retrieve a lga with a matching ID
 

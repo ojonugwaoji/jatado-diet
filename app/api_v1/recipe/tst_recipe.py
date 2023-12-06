@@ -1,7 +1,7 @@
 import pytest
 from fastapi import status
 from bson import ObjectId
-from ..config import settings
+from config import settings
 
 mockRecipe = {
     "name": "Wash",

@@ -1,6 +1,6 @@
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorCollection, AsyncIOMotorDatabase
-from .config import settings
-from .common.enums import Environment
+from config import settings
+from common.enums import Environment
 
 env = settings.environment
 client: AsyncIOMotorClient

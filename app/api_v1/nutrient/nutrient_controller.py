@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Body, Depends, status
-from ..common.serializer import serialize
-from ..common.schema import ListQueryParams
-from ..common.services import retrieve_list
-from ..database import get_nutrients_collection, get_database
+from common.serializer import serialize
+from common.schema import ListQueryParams
+from common.services import retrieve_list
+from database import get_nutrients_collection, get_database
 from .nutrient_helper import deserialize_nutrient
-from ..auth.auth_schema import OAuthTokenDeps
+from auth.auth_schema import OAuthTokenDeps
 
 from .nutrient_service import (
     add_nutrient,
@@ -19,7 +19,7 @@ from .nutrient_schema import (
 )
 
 
-from ..common.schema import ResponseModel, ErrorResponseModel
+from common.schema import ResponseModel, ErrorResponseModel
 
 router = APIRouter()
 

@@ -6,11 +6,11 @@ import strawberry
 from bson import ObjectId
 from strawberry.types import Info
 from strawberry.fastapi import BaseContext
-from ..database import get_database, get_country_collection
-from ..common.services import retrieve_list
-from ..country.country_service import deserialize_country
-from ..common.schema import ListQueryParams
-from ..auth.auth_schema import OAuthTokenDeps
+from database import get_database, get_country_collection
+from common.services import retrieve_list
+from country.country_service import deserialize_country
+from common.schema import ListQueryParams
+from auth.auth_schema import OAuthTokenDeps
 
 
 class CustomContext(BaseContext):

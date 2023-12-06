@@ -1,6 +1,6 @@
 import pytest
 from fastapi import status
-from ..config import settings
+from config import settings
 
 mock_micro_nutrient = {
     "name": "Carbohydrate",

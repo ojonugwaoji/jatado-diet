@@ -1,8 +1,8 @@
 import pytest
 from fastapi import status
 from bson import ObjectId
-from ..config import settings
-from ..food_item.food_item_schema import CreateFoodItemDto
+from config import settings
+from food_item.food_item_schema import CreateFoodItemDto
 
 mockFoodItem = {
     "name": "Beef",
