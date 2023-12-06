@@ -62,6 +62,7 @@ def create_rest_application() -> FastAPI:
             "mongodb_uri": settings.mongodb_dev_uri,
             "db_name": settings.mongodb_dev_db_name
         }
+        
 
     return app
 

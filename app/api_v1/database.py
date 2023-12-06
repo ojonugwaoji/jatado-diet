@@ -1,6 +1,7 @@
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorCollection, AsyncIOMotorDatabase
 from config import settings
 from common.enums import Environment
+import certifi
 
 env = settings.environment
 client: AsyncIOMotorClient
@@ -33,17 +34,25 @@ async def initialize_database() -> AsyncIOMotorDatabase:
     global client
 
     if env == Environment.DEVELOPMENT:
-        client = AsyncIOMotorClient(settings.mongodb_dev_uri)
+        client = AsyncIOMotorClient(settings.mongodb_dev_uri, tlsCAFile=certifi.where())
         database = client[settings.mongodb_dev_db_name]
     elif env == Environment.PRODUCTION:
-        client = AsyncIOMotorClient(settings.mongodb_prod_uri)
+        client = AsyncIOMotorClient(settings.mongodb_prod_uri, tlsCAFile=certifi.where())
         database = client[settings.mongodb_prod_db_name]
     else:
-        client = AsyncIOMotorClient(settings.mongodb_test_uri)
+        client = AsyncIOMotorClient(settings.mongodb_test_uri, tlsCAFile=certifi.where())
         database = client[settings.mongodb_test_db_name]
 
     user_collection = get_user_collection(database)
     await user_collection.create_index('username')
+
+    food_item_collection = get_food_item_collection(database)
+    await food_item_collection.create_index('items')
+
+    nutrient_collection = get_nutrients_collection(database)
+    await nutrient_collection.create_index('nutrients')
+
+
 
     print('Connection Opened')
 
