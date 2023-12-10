@@ -47,11 +47,10 @@ async def initialize_database() -> AsyncIOMotorDatabase:
     await user_collection.create_index('username')
 
     food_item_collection = get_food_item_collection(database)
-    await food_item_collection.create_index('items')
+    await food_item_collection.create_index('name')
 
     nutrient_collection = get_nutrients_collection(database)
-    await nutrient_collection.create_index('nutrients')
-
+    await nutrient_collection.create_index('name')
 
 
     print('Connection Opened')
