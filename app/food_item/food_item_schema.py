@@ -2,10 +2,10 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 from typing import List
 from bson import ObjectId
-from language.language_schema import Language
-from common.schema import Name
-from nutrient.nutrient_schema import Nutrient
-from common.types import PyObjectId
+from ..language.language_schema import Language
+from ..common.schema import Name
+from ..nutrient.nutrient_schema import Nutrient
+from ..common.types import PyObjectId
 
 
 class NutrientAndQuantity(BaseModel):

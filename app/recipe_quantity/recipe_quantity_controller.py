@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Body, Depends, status
 from fastapi.encoders import jsonable_encoder
-from common.schema import ResponseModel, ErrorResponseModel
-from common.services import retrieve_list
-from common.schema import ListQueryParams
-from database import get_database, get_recipe_quantity_collection
+from ..common.schema import ResponseModel, ErrorResponseModel
+from ..common.services import retrieve_list
+from ..common.schema import ListQueryParams
+from ..database import get_database, get_recipe_quantity_collection
 from .recipe_quantity_helper import deserialize_recipe_quantity
-from auth.auth_schema import OAuthTokenDeps
+from ..auth.auth_schema import OAuthTokenDeps
 
 from .recipe_quantity_service import (
     add_recipe_quantity,

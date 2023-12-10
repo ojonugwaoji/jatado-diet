@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from database import get_nutrients_collection
+from ..database import get_nutrients_collection
 from .nutrient_helper import deserialize_nutrient
 from motor.motor_asyncio import AsyncIOMotorDatabase, AsyncIOMotorCollection
 

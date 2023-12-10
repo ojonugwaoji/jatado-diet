@@ -2,8 +2,8 @@ from datetime import datetime, timedelta
 from typing import Annotated
 from fastapi import APIRouter, status, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
-from common.schema import ResponseModel
-from database import get_database
+from ..common.schema import ResponseModel
+from ..database import get_database
 from .auth_schema import Token
 
 from .auth_service import (

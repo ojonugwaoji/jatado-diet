@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from database import *
+from ..database import *
 from .ethnicity_helper import deserialize_ethnicity
 
 

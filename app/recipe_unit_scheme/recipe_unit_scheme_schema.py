@@ -2,8 +2,8 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 from typing import List
 from bson import ObjectId
-from common.schema import Name
-from common.types import PyObjectId, Type
+from ..common.schema import Name
+from ..common.types import PyObjectId, Type
 
 
 class RecipeUnitScheme(BaseModel):

@@ -1,12 +1,12 @@
 from typing import Annotated
 from fastapi import APIRouter, Body, Depends
 from .user_schema import User
-from common.schema import ResponseModel, ErrorResponseModel, ListQueryParams
-from common.serializer import serialize
-from common.services import retrieve_list
-from auth.auth_schema import OAuthTokenDeps
+from ..common.schema import ResponseModel, ErrorResponseModel, ListQueryParams
+from ..common.serializer import serialize
+from ..common.services import retrieve_list
+from ..auth.auth_schema import OAuthTokenDeps
 from .user_helper import deserialize_user
-from database import get_database
+from ..database import get_database
 
 from .user_service import (
     add_user,

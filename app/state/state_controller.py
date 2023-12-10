@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Body, Depends, status
-from common.serializer import serialize
-from common.schema import ListQueryParams
-from common.services import retrieve_list
+from ..common.serializer import serialize
+from ..common.schema import ListQueryParams
+from ..common.services import retrieve_list
 from .state_helper import deserialize_state
-from auth.auth_schema import OAuthTokenDeps
-from database import get_database, get_state_collection
+from ..auth.auth_schema import OAuthTokenDeps
+from ..database import get_database, get_state_collection
 
 from .state_service import (
     add_state,
@@ -19,7 +19,7 @@ from .state_schema import (
 )
 
 
-from common.schema import ResponseModel, ErrorResponseModel
+from ..common.schema import ResponseModel, ErrorResponseModel
 
 router = APIRouter()
 

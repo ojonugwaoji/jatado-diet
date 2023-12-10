@@ -6,13 +6,13 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel, Field
-from database import get_user_collection, get_database
-from user.user_schema import User, UserInDB
-from config import settings
-from .auth_schema import OAuthTokenDeps
-from user.user_schema import Role, Status
 from bson import ObjectId
 from motor.motor_asyncio import AsyncIOMotorDatabase
+from ..database import get_user_collection, get_database
+from ..user.user_schema import User, UserInDB
+from ..config import settings
+from .auth_schema import OAuthTokenDeps
+from ..user.user_schema import Role, Status
 
 # to get a string like this run:
 # openssl rand -hex 32

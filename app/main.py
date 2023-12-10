@@ -2,23 +2,23 @@ from fastapi import FastAPI
 import strawberry
 from strawberry.fastapi import GraphQLRouter
 from starlette_graphene3 import GraphQLApp, make_graphiql_handler, make_playground_handler
-from country.country_controller import router as CountryRouter
-from state.state_controller import router as StateRouter
-from user.user_controller import router as UserRouter
-from lga.lga_controller import router as LgaRouter
-from action.action_controller import router as ActionRouter
-from ethnicity.ethnicity_controller import router as EthnicityRouter
-from language.language_controller import router as LanguageRouter
-from nutrient.nutrient_controller import router as NutrientRouter
-from auth.auth_controller import router as AuthRouter
-from recipe_unit_scheme.recipe_unit_scheme_controller import router as RecipeUnitSchemRouter
-from recipe_quantity.recipe_quantity_controller import router as RecipeQuantity
-from food_item.food_item_controller import router as FoodItemRouter
-from config import settings
-from common.enums import Tag
-from common.strawberry_core import get_context
-from database import initialize_database, close_database_connection
-from common.strawberry_core import Query
+from .country.country_controller import router as CountryRouter
+from .state.state_controller import router as StateRouter
+from .user.user_controller import router as UserRouter
+from .lga.lga_controller import router as LgaRouter
+from .action.action_controller import router as ActionRouter
+from .ethnicity.ethnicity_controller import router as EthnicityRouter
+from .language.language_controller import router as LanguageRouter
+from .nutrient.nutrient_controller import router as NutrientRouter
+from .auth.auth_controller import router as AuthRouter
+from .recipe_unit_scheme.recipe_unit_scheme_controller import router as RecipeUnitSchemRouter
+from .recipe_quantity.recipe_quantity_controller import router as RecipeQuantity
+from .food_item.food_item_controller import router as FoodItemRouter
+from .config import settings
+from .common.enums import Tag
+from .common.strawberry_core import get_context
+from .database import initialize_database, close_database_connection
+from .common.strawberry_core import Query
 
 
 def create_rest_application() -> FastAPI:

@@ -1,7 +1,7 @@
 from enum import Enum
 from pydantic import BaseModel, Field
 from bson import ObjectId
-from common.types import PyObjectId
+from ..common.types import PyObjectId
 #2936dd31-lanz-8397-nupk-c30e96a51f99
 
 class Role(str, Enum):

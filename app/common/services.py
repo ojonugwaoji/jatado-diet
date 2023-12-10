@@ -1,6 +1,6 @@
 from motor.motor_asyncio import AsyncIOMotorCollection
 from .schema import ListQueryParams
-from config import settings
+from ..config import settings
 
 
 async def retrieve_list(params: ListQueryParams, collection: AsyncIOMotorCollection, deserialize, search_field: str | None = 'name') -> list:

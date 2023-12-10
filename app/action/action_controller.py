@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Body, Depends, status
 from fastapi.encoders import jsonable_encoder
-from common.schema import ResponseModel, ErrorResponseModel
-from common.services import retrieve_list
-from common.schema import ListQueryParams
-from database import get_database, get_action_collection
+from ..common.schema import ResponseModel, ErrorResponseModel
+from ..common.services import retrieve_list
+from ..common.schema import ListQueryParams
+from ..database import get_database, get_action_collection
 from .action_helper import deserialize_action
-from auth.auth_schema import OAuthTokenDeps
+from ..auth.auth_schema import OAuthTokenDeps
 
 from .action_service import (
     add_action,

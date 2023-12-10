@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from database import *
+from ..database import *
 from motor.motor_asyncio import AsyncIOMotorDatabase, AsyncIOMotorCollection
 from .food_item_helper import deserialize_food_item
 
