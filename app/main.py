@@ -18,7 +18,7 @@ from .config import settings
 from .common.enums import Tag
 from .common.strawberry_core import get_context
 from .database import initialize_database, close_database_connection
-from .common.strawberry_core import Query
+from .common.strawberry_core import Query, Mutation
 
 
 def create_rest_application() -> FastAPI:
@@ -48,6 +48,8 @@ def create_rest_application() -> FastAPI:
                        tags=[Tag.LANGUAGE])
     app.include_router(FoodItemRouter,
                        prefix='/food_items', tags=[Tag.FOOD_ITEM])
+    
+    app.add_event_handler("startup", initialize_database)
 
     @app.get('/', tags=[Tag.MISC])
     async def read_root():
@@ -64,7 +66,7 @@ def create_rest_application() -> FastAPI:
             "db_name": settings.mongodb_dev_db_name
         }
     
-    schema = strawberry.Schema(query=Query)
+    schema = strawberry.Schema(query=Query, mutation=Mutation)
     graphql_app = GraphQLRouter(schema)
     #Requires Auth
     #graphql_app = GraphQLRouter(schema, context_getter=get_context)
@@ -72,6 +74,25 @@ def create_rest_application() -> FastAPI:
 
     app.include_router(graphql_app, prefix="/graphql")
 
+    #app.mount("/graphql", GraphQLApp(
+    #    schema=schema, on_get=make_playground_handler()
+    #))
+
     return app
 
 app = create_rest_application()
+
+
+def create_graphql_application() -> FastAPI:
+    app = FastAPI()
+    schema = strawberry.Schema(query=Query, mutation=Mutation)
+    graphql_app = GraphQLRouter(schema)
+
+    # DB Events
+    app.add_event_handler("startup", initialize_database)
+    app.add_event_handler("shutdown", close_database_connection)
+    app.include_router(graphql_app, prefix="/graphql")
+    return app
+
+
+#app = create_graphql_application()

@@ -1,4 +1,6 @@
-from typing import List
+from functools import wraps
+from enum import Enum
+from typing import List, Any
 from datetime import datetime
 from pydantic import BaseModel, Field
 from fastapi import Depends
@@ -11,14 +13,39 @@ from ..common.services import retrieve_list
 from ..country.country_service import deserialize_country
 from ..common.schema import ListQueryParams
 from ..auth.auth_schema import OAuthTokenDeps
+from app.user.user_schema import User
+from app.user.user_service import add_user
+from app.common.types import PyObjectId
 
+
+@strawberry.enum
+class RoleEnum(Enum):
+    ADMIN = 'ADMIN'
+    STAFF = 'STAFF'
+    NuTRITIONIST = 'NUTRITIONIST'
+    USER = 'USER'
+
+Role = strawberry.enum(RoleEnum)
+
+
+@strawberry.enum
+class StatusEnum(Enum):    
+    ACTIVE = 'ACTIVE'
+    SUSPENDED = 'SUSPENDED'
+
+Status = strawberry.enum(StatusEnum)
+
+#database = get_database()
 
 class CustomContext(BaseContext):
     def __init__(self, database):
         self.database = database
 
 
-async def get_context(token: OAuthTokenDeps, database=Depends(get_database)):
+#async def get_context(token: OAuthTokenDeps, database=Depends(get_database)):
+    #return CustomContext(database)
+
+async def get_context(database=Depends(get_database)):
     return CustomContext(database)
 
 
@@ -50,3 +77,38 @@ class Query:
 # @strawberry.type
 # class Mutation:
     # add_country: List = strawberry.mutation(resolver=)
+
+@strawberry.input
+class CreateUserInput:
+    id: str
+    username: str
+    email: str
+    password: str
+    firstname: str
+    lastname: str
+    role: RoleEnum
+    active: StatusEnum
+
+@strawberry.type
+class User:
+    id: str
+    username: str
+    email: str
+    password: str
+    firstName: str
+    lastName: str
+    role: RoleEnum
+    active: StatusEnum
+
+@strawberry.type
+class Mutation:
+    @strawberry.mutation
+    async def create_user(info: Info, input: CreateUserInput) -> User:
+        database = info.context.database
+        print(f"Context type: {type(info.context)}")
+        print(f"Context attributes: {info.context.__dict__}")
+        user_data = await add_user(database, input)
+        return user_data
+
+
+ #schema = strawberry.Schema(query=Query, mutation=Mutation)

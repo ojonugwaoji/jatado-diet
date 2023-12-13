@@ -17,7 +17,7 @@ def get_db_name(env: str) -> AsyncIOMotorDatabase:
         return settings.mongodb_test_db_name
 
 
-async def get_database():
+async def get_database() -> AsyncIOMotorDatabase:
     name = get_db_name(env)
     return client[name]
 

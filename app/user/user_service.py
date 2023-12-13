@@ -24,7 +24,7 @@ async def retrieve_user(database: AsyncIOMotorDatabase, id: str) -> dict:
     user = await user_collection.find_one({"_id": ObjectId(id)})
 
     if user:
-        return deserialize_user(user)
+        return user
 
 
 async def add_user(database: AsyncIOMotorDatabase, data: dict) -> dict:
