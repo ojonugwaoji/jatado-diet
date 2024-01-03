@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import strawberry
 from strawberry.fastapi import GraphQLRouter
 from starlette_graphene3 import GraphQLApp, make_graphiql_handler, make_playground_handler
@@ -23,6 +24,21 @@ from .common.strawberry_core import Query, Mutation
 
 def create_rest_application() -> FastAPI:
     app = FastAPI()
+    
+    #Middleware for Api calls
+    origins = [
+        "http://localhost",
+        "http://localhost:8080",
+        "http://localhost:3000",
+    ]
+    
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     # DB Events
     app.add_event_handler("startup", initialize_database)
