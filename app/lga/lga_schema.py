@@ -6,7 +6,7 @@ from ..common.types import PyObjectId
 class Lga(BaseModel):
     id: PyObjectId = Field(alias='_id')
     name: str = Field(...)
-    description: str = Field(None)
+    description: str  | None
     state_id: str = Field(...)
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -27,8 +27,8 @@ class Lga(BaseModel):
 
 class CreateLgaDto(BaseModel):
     name: str = Field(...)
-    description: str = Field(None)
-    state_id: str = Field(None)
+    description: str  | None
+    state_id: str  | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
@@ -46,9 +46,9 @@ class CreateLgaDto(BaseModel):
 
 
 class UpdateLgaDto(BaseModel):
-    name: str | None = Field(None)
-    description: str | None = Field(None)
-    state_id: str | None = Field(None)
+    name: str | None  | None
+    description: str | None  | None
+    state_id: str | None  | None
     updated_at: datetime | None = Field(datetime.now())
 
     model_config = {

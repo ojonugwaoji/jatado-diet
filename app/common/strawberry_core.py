@@ -16,6 +16,8 @@ from ..auth.auth_schema import OAuthTokenDeps
 from app.user.user_schema import User
 from app.user.user_service import add_user
 from app.common.types import PyObjectId
+from app.country.country_schema import Country
+from app.country.country_controller import get_countries
 
 
 @strawberry.enum
@@ -48,32 +50,20 @@ class CustomContext(BaseContext):
 async def get_context(database=Depends(get_database)):
     return CustomContext(database)
 
-
-@strawberry.type
-class Country:
-    id: str
-    name: str
-    description: str
-    created_at: datetime | None
-    updated_at: datetime | None
-
+@strawberry.experimental.pydantic.type(model=Country, all_fields=True)
+class getCountry:
+    pass
 
 @strawberry.type
 class Query:
     @strawberry.field
-    def hello(self) -> str:
-        return "Hello World"
+    async def countries(self)->List[getCountry]:
+        return get_countries()
 
     @strawberry.field
-    async def get_countries(self, info: Info, page: int | None, limit: int | None, keyword: str | None) -> List[Country]:
-        database = info.context.database
-        params = ListQueryParams(page=page, limit=limit, keyword=keyword)
-        print('page: ', page)
-        country_collection = get_country_collection(database)
-        countries = await retrieve_list(params, country_collection, deserialize_country)
-        return countries
-
-
+    def hello(self) -> str:
+        return "Hello World"
+    
 # @strawberry.type
 # class Mutation:
     # add_country: List = strawberry.mutation(resolver=)

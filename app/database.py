@@ -52,6 +52,30 @@ async def initialize_database() -> AsyncIOMotorDatabase:
     nutrient_collection = get_nutrients_collection(database)
     await nutrient_collection.create_index('name')
 
+    country_collection = get_country_collection(database)
+    await country_collection.create_index('name')
+
+    state_collection = get_state_collection(database)
+    await state_collection.create_index('name')
+
+    lga_collection = get_lga_collection(database)
+    await lga_collection.create_index('name')
+
+    ethnicity_collection = get_ethnicity_collection(database)
+    await ethnicity_collection.create_index('name')
+
+    language_collection = get_language_collection(database)
+    await language_collection.create_index('name')
+
+    action_collection = get_language_collection(database)
+    await action_collection.create_index('name')
+
+    recipe_unit_scheme_collection = get_recipe_unit_scheme_collection(database)
+    await recipe_unit_scheme_collection.create_index('name')
+
+    recipe_quantity_collection = get_recipe_quantity_collection(database)
+    await recipe_quantity_collection.create_index('name')
+
 
     print('Connection Opened')
 

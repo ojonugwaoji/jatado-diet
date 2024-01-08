@@ -8,7 +8,7 @@ from ..common.types import PyObjectId
 class Action(BaseModel):
     id: PyObjectId = Field(alias='_id')
     names: List[Name] = Field([])
-    description: str = Field(None)
+    description: str  | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
@@ -26,8 +26,8 @@ class Action(BaseModel):
 
 
 class CreateActionDto(BaseModel):
-    description: str = Field(None)
-    state_id: str = Field(None)
+    description: str  | None
+    state_id: str  | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
@@ -45,8 +45,8 @@ class CreateActionDto(BaseModel):
 
 
 class UpdateActionDto(BaseModel):
-    description: str | None = Field(None)
-    state_id: str | None = Field(None)
+    description: str | None  | None
+    state_id: str | None  | None
     updated_at: datetime | None = Field(datetime.now())
 
     model_config = {

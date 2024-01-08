@@ -8,7 +8,7 @@ from ..common.types import PyObjectId
 class State(BaseModel):
     id: PyObjectId = Field(alias='_id')
     name: str = Field(...)
-    description: str = Field(None)
+    description: str  | None
     country_id: str = Field(...)
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -30,8 +30,8 @@ class State(BaseModel):
 @strawberry.input
 class CreateStateDto(BaseModel):
     name: str = Field(...)
-    description: str = Field(None)
-    country_id: str = Field(None)
+    description: str  | None
+    country_id: str  | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
@@ -50,9 +50,9 @@ class CreateStateDto(BaseModel):
 
 @strawberry.input
 class UpdateStateDto(BaseModel):
-    name: str | None = Field(None)
-    description: str | None = Field(None)
-    country_id: str | None = Field(None)
+    name: str | None  | None
+    description: str | None  | None
+    country_id: str | None  | None
     updated_at: datetime | None = Field(datetime.now())
 
     model_config = {

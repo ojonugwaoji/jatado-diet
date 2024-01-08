@@ -11,7 +11,7 @@ class RecipeQuantity(BaseModel):
     name: str = Field(...)
     names: List[Name] = Field([])
     recipe_unit_scheme_id: str = Field(...)
-    description: str = Field(None)
+    description: str  | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
@@ -31,8 +31,8 @@ class RecipeQuantity(BaseModel):
 
 class CreateRecipeQuantityDto(BaseModel):
     name: str = Field(...)
-    description: str = Field(None)
-    recipe_unit_scheme_id: str | None = Field(None)
+    description: str  | None
+    recipe_unit_scheme_id: str | None  | None
     names: List[Name] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -51,9 +51,9 @@ class CreateRecipeQuantityDto(BaseModel):
 
 
 class UpdateRecipeQuantityDto(BaseModel):
-    name: str | None = Field(None)
-    description: str | None = Field(None)
-    recipe_unit_scheme_id: str | None = Field(None)
+    name: str | None  | None
+    description: str | None  | None
+    recipe_unit_scheme_id: str | None  | None
     names: List[Name] | None = Field([])
     updated_at: datetime | None = Field(datetime.now())
 

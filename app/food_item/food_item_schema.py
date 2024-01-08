@@ -25,7 +25,7 @@ class NameHydrated(BaseModel):
 
 class FoodItem(BaseModel):
     id: PyObjectId = Field(alias='_id')
-    description: str = Field(None)
+    description: str  | None
     names: List[Name] = Field([])
     nutrients: List[NutrientAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
@@ -44,7 +44,7 @@ class FoodItem(BaseModel):
 class FoodItemHydrated(BaseModel):
     id: PyObjectId = Field(alias='_id')
     name: str = Field(...)
-    description: str = Field(None)
+    description: str  | None
     names: List[NameHydrated] = Field([])
     nutrients: List[NutrientHydratedAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
@@ -63,7 +63,7 @@ class FoodItemHydrated(BaseModel):
 
 class CreateFoodItemDto(BaseModel):
     name: str = Field(...)
-    description: str | None = Field(None)
+    description: str | None  | None
     quantity: int = Field(...)
     names: List[Name] = Field([])
     nutrients: List[NutrientAndQuantity] = Field([])
@@ -94,8 +94,8 @@ class CreateFoodItemDto(BaseModel):
 
 
 class UpdateFoodItemDto(BaseModel):
-    name: str | None = Field(None)
-    description: str | None = Field(None)
+    name: str | None  | None
+    description: str | None  | None
     names: List[NameHydrated] | None = Field([])
     nutrients: List[NutrientHydratedAndQuantity] | None = Field([])
     updated_at: datetime | None = Field(datetime.now())

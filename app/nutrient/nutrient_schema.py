@@ -5,7 +5,7 @@ from ..common.types import PyObjectId
 
 class Nutrient(BaseModel):
     id: PyObjectId = Field(alias='_id')
-    macro_id: str | None = Field(None)
+    macro_id: str  | None
     is_macro: bool = Field(...)
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -28,7 +28,7 @@ class CreateNutrientDto(BaseModel):
     name: str = Field(...)
     description: str = Field(None)
     is_macro: bool = Field(...)
-    macro_id: str | None = Field(None)
+    macro_id: str  | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
@@ -47,9 +47,9 @@ class CreateNutrientDto(BaseModel):
 
 
 class UpdateNutrientDto(BaseModel):
-    name: str | None = Field(None)
-    description: str | None = Field(None)
-    macro_id: str | None = Field(None)
+    name: str  | None
+    description: str  | None
+    macro_id: str  | None
     is_macro: bool | None = Field(...)
     updated_at: datetime | None = Field(datetime.now())
 

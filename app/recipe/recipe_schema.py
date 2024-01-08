@@ -28,7 +28,7 @@ class Recipe(BaseModel):
     name: str = Field(...)
     names: List[Name] = Field([])
     steps: str = Field(...)
-    description: str = Field(None)
+    description: str  | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
@@ -48,8 +48,8 @@ class Recipe(BaseModel):
 
 class CreateRecipeDto(BaseModel):
     name: str = Field(...)
-    description: str = Field(None)
-    recipe_unit_scheme_id: str | None = Field(None)
+    description: str  | None
+    recipe_unit_scheme_id: str | None  | None
     names: List[Name] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -68,9 +68,9 @@ class CreateRecipeDto(BaseModel):
 
 
 class UpdateRecipeDto(BaseModel):
-    name: str | None = Field(None)
-    description: str | None = Field(None)
-    recipe_unit_scheme_id: str | None = Field(None)
+    name: str | None  | None
+    description: str | None  | None
+    recipe_unit_scheme_id: str | None  | None
     names: List[Name] | None = Field([])
     updated_at: datetime | None = Field(datetime.now())
 

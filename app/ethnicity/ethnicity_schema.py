@@ -27,7 +27,7 @@ class EthnicitySchema(BaseModel):
 
 class CreateEthnicityDto(BaseModel):
     name: str = Field(...)
-    description: str = Field(None)
+    description: str | None
     lga_id: str = Field(None)
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())

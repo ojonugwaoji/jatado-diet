@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import strawberry
 from strawberry.fastapi import GraphQLRouter
-from starlette_graphene3 import GraphQLApp, make_graphiql_handler, make_playground_handler
+from starlette_graphene3 import GraphQLApp, make_graphiql_handler
 from .country.country_controller import router as CountryRouter
 from .state.state_controller import router as StateRouter
 from .user.user_controller import router as UserRouter
@@ -82,17 +82,14 @@ def create_rest_application() -> FastAPI:
             "db_name": settings.mongodb_dev_db_name
         }
     
-    schema = strawberry.Schema(query=Query, mutation=Mutation)
-    graphql_app = GraphQLRouter(schema)
+    #schema = strawberry.Schema(query=Query, mutation=Mutation)
+    #graphql_app = GraphQLRouter(schema)
     #Requires Auth
     #graphql_app = GraphQLRouter(schema, context_getter=get_context)
+    #schem = Schema(query=Query, mutation=Mutation)
 
 
-    app.include_router(graphql_app, prefix="/graphql")
-
-    #app.mount("/graphql", GraphQLApp(
-    #    schema=schema, on_get=make_playground_handler()
-    #))
+    #app.include_router(graphql_app, prefix="/graphql")
 
     return app
 
