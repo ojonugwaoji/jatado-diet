@@ -18,6 +18,7 @@ async def retrieve_state(database: AsyncIOMotorDatabase, id: str) -> dict:
 async def add_state(database: AsyncIOMotorDatabase, data: dict) -> dict:
     state_collection = get_state_collection(database)
     state = await state_collection.insert_one(data)
+    print(state)
     new_state = await state_collection.find_one({"_id": state.inserted_id})
     return deserialize_state(new_state)
 

@@ -34,6 +34,7 @@ async def add_state_data(state: CreateStateDto = Body(...), database=Depends(get
     - **country_id**: Foreign key
     """
     state = serialize(state)
+    print(state)
     new_state = await add_state(database, state)
     return ResponseModel(new_state, "state added successfully.")
 

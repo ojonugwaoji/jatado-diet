@@ -80,7 +80,7 @@ async def update_nutrient_data(token: OAuthTokenDeps, id: str, req: UpdateNutrie
     return ErrorResponseModel(
         "An error occurred",
         404,
-        "There was an error updating the student data.",
+        "There was an error updating the Nutrient data.",
     )
 
 

@@ -45,6 +45,7 @@ class FoodItemHydrated(BaseModel):
     id: PyObjectId = Field(alias='_id')
     name: str = Field(...)
     description: str  | None
+    language_id: str | None
     names: List[NameHydrated] = Field([])
     nutrients: List[NutrientHydratedAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
@@ -56,6 +57,7 @@ class FoodItemHydrated(BaseModel):
             "example": {
                 "name": "Nigeria",
                 "description": "Most populous nation in Africa",
+                "language_id": "659b6f8f48e3e48cea5bbccf",
             },
         },
     }
@@ -63,7 +65,8 @@ class FoodItemHydrated(BaseModel):
 
 class CreateFoodItemDto(BaseModel):
     name: str = Field(...)
-    description: str | None  | None
+    description: str | None
+    language_id: str | None
     quantity: int = Field(...)
     names: List[Name] = Field([])
     nutrients: List[NutrientAndQuantity] = Field([])
@@ -94,8 +97,9 @@ class CreateFoodItemDto(BaseModel):
 
 
 class UpdateFoodItemDto(BaseModel):
-    name: str | None  | None
-    description: str | None  | None
+    name: str | None
+    description: str | None
+    language_id: str | None
     names: List[NameHydrated] | None = Field([])
     nutrients: List[NutrientHydratedAndQuantity] | None = Field([])
     updated_at: datetime | None = Field(datetime.now())

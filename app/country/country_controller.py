@@ -30,7 +30,6 @@ async def add_country_data(token: OAuthTokenDeps, country: CreateCountryDto = Bo
     - **name**: Each country must have a name
     - **description**: A description
     """
-    print(country)
     country = serialize(country)
     new_country = await add_country(database, country)
     return ResponseModel(new_country, "Country added successfully.")

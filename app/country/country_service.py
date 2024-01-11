@@ -15,7 +15,6 @@ async def retrieve_country(database: AsyncIOMotorDatabase, id: str) -> dict:
 
 
 async def add_country(database: AsyncIOMotorDatabase, data: dict) -> dict:
-    print(data)
     country_collection = get_country_collection(database)
     country = await country_collection.insert_one(data)
     new_country = await country_collection.find_one({"_id": country.inserted_id})
