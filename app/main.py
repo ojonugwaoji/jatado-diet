@@ -27,11 +27,15 @@ def create_rest_application() -> FastAPI:
     
     #Middleware for Api calls
     origins = [
-        "http://localhost",
-        "http://localhost:8080",
-        "http://localhost:3000",
         "*"
     ]
+
+    #origins = [
+    #    "http://localhost",
+    #    "http://localhost:8080",
+    #    "http://localhost:3000",
+    #    "*"
+    #]
     
     app.add_middleware(
         CORSMiddleware,
