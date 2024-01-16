@@ -26,16 +26,17 @@ def create_rest_application() -> FastAPI:
     app = FastAPI()
     
     #Middleware for Api calls
-    origins = [
-        "*"
-    ]
-
     #origins = [
-    #    "http://localhost",
-    #    "http://localhost:8080",
-    #    "http://localhost:3000",
     #    "*"
     #]
+
+    origins = [
+        "http://localhost",
+        "http://localhost:8080",
+        "http://localhost:3000",
+        "https://jatado.org/",
+        "http://jatado.org/",
+    ]
     
     app.add_middleware(
         CORSMiddleware,
