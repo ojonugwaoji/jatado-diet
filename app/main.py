@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware import Middleware
+#from fastapi.middleware.cors import CORSMiddleware
 import strawberry
 from strawberry.fastapi import GraphQLRouter
 from starlette_graphene3 import GraphQLApp, make_graphiql_handler
@@ -40,7 +41,7 @@ def create_rest_application() -> FastAPI:
     
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=origins,
+        allow_origins=["*"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
