@@ -35,13 +35,13 @@ def create_rest_application() -> FastAPI:
         "http://localhost",
         "http://localhost:8080",
         "http://localhost:3000",
-        "https://jatado.org/",
-        "http://jatado.org/",
+        "https://jatado.org",
+        "http://jatado.org",
     ]
     
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
+        allow_origins=origins,
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
