@@ -6,6 +6,7 @@ from ..common.types import PyObjectId
 class Nutrient(BaseModel):
     id: PyObjectId = Field(alias='_id')
     name: str = Field(...)
+    description: str | None
     macro_id: str  | None
     is_macro: bool = Field(...)
     created_at: datetime | None = Field(datetime.now())

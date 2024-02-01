@@ -69,7 +69,7 @@ async def update_food_item_data(token: OAuthTokenDeps, id: str, req: UpdateFoodI
     - **description**: A description
     """
     req = {k: v for k, v in req.model_dump().items() if v is not None}
-    updated_food_item = await update_food_item(id, req)
+    updated_food_item = await update_food_item(database, id, req)
 
     if updated_food_item:
         return ResponseModel(
