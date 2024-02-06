@@ -9,7 +9,6 @@ from ..common.types import PyObjectId, Type
 class RecipeUnitScheme(BaseModel):
     id: PyObjectId = Field(alias='_id')
     names: List[Name] = Field([])
-    options: List[Type] = Field([])
     description: str = Field(None)
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -29,7 +28,6 @@ class RecipeUnitScheme(BaseModel):
 
 class CreateRecipeUnitSchemeDto(BaseModel):
     description: str = Field(None)
-    options: List[Type] = Field([])
     names: List[Name] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -56,7 +54,6 @@ class CreateRecipeUnitSchemeDto(BaseModel):
 
 class UpdateRecipeUnitSchemeDto(BaseModel):
     description: str | None = Field(None)
-    options: List[Type] | None = Field([])
     names: List[Name] | None = Field([])
     updated_at: datetime | None = Field(datetime.now())
 

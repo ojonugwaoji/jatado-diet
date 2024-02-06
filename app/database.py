@@ -67,7 +67,7 @@ async def initialize_database() -> AsyncIOMotorDatabase:
     language_collection = get_language_collection(database)
     await language_collection.create_index('name')
 
-    action_collection = get_language_collection(database)
+    action_collection = get_action_collection(database)
     await action_collection.create_index('name')
 
     recipe_unit_scheme_collection = get_recipe_unit_scheme_collection(database)

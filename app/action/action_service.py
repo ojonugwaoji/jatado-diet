@@ -1,6 +1,7 @@
 from bson.objectid import ObjectId
 from ..database import *
 from .action_helper import deserialize_action
+from motor.motor_asyncio import AsyncIOMotorDatabase, AsyncIOMotorCollection
 from ..database import get_action_collection
 
 # Retrieve a action with a matching ID
@@ -23,12 +24,13 @@ async def add_action(database: AsyncIOMotorDatabase, data: dict) -> dict:
 # Update a action with a matching ID
 
 
-async def update_action(id: str, data: dict):
+async def update_action(database: AsyncIOMotorDatabase, id: str, data: dict):
     # Return false if an empty request body is sent.
     if len(data) < 1:
         return False
 
-    action_collection = get_action_collection(database)
+    #action_collection = get_action_collection(database)
+    action_collection: AsyncIOMotorCollection = get_action_collection(database)
     action = await action_collection.find_one({"_id": ObjectId(id)})
 
     if action:
