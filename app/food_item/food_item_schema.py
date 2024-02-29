@@ -15,13 +15,13 @@ class NutrientAndQuantity(BaseModel):
 
 
 class NutrientHydratedAndQuantity(BaseModel):
-    nutrient: Nutrient
+    nutrient_id: str
     quantity: float
     unit: str
 
 
 class NameHydrated(BaseModel):
-    language: Language
+    language_id: str
     name: str
 
 
@@ -29,6 +29,7 @@ class FoodItem(BaseModel):
     id: PyObjectId = Field(alias='_id')
     description: str  | None
     names: List[Name] = Field([])
+    language_id: str = Field(None)
     nutrients: List[NutrientAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -60,6 +61,7 @@ class FoodItemHydrated(BaseModel):
     id: PyObjectId = Field(alias='_id')
     description: str  | None
     names: List[NameHydrated] = Field([])
+    language_id: str = Field(None)
     nutrients: List[NutrientHydratedAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -91,6 +93,7 @@ class FoodItemHydrated(BaseModel):
 class CreateFoodItemDto(BaseModel):
     description: str | None
     names: List[Name] = Field([])
+    language_id: str = Field(None)
     nutrients: List[NutrientAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
