@@ -37,6 +37,7 @@ def create_rest_application() -> FastAPI:
         "http://localhost:3000",
         "https://jatado.org",
         "http://jatado.org",
+        "*"
     ]
     
     app.add_middleware(
