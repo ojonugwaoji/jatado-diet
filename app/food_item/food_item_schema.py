@@ -1,6 +1,6 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional
 from bson import ObjectId
 from ..language.language_schema import Language
 from ..common.schema import Name
@@ -28,8 +28,9 @@ class NameHydrated(BaseModel):
 class FoodItem(BaseModel):
     id: PyObjectId = Field(alias='_id')
     description: str  | None
+    measuring_unit: Optional[str] = None
+    per_unit_quantity: Optional[str] = None
     names: List[Name] = Field([])
-    language_id: str = Field(None)
     nutrients: List[NutrientAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -59,9 +60,10 @@ class FoodItem(BaseModel):
 
 class FoodItemHydrated(BaseModel):
     id: PyObjectId = Field(alias='_id')
-    description: str  | None
+    description: str  | None    
+    measuring_unit: str = None
+    per_unit_quantity: str = None
     names: List[NameHydrated] = Field([])
-    language_id: str = Field(None)
     nutrients: List[NutrientHydratedAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -92,8 +94,9 @@ class FoodItemHydrated(BaseModel):
 
 class CreateFoodItemDto(BaseModel):
     description: str | None
-    names: List[Name] = Field([])
-    language_id: str = Field(None)
+    names: List[Name] = Field([])    
+    measuring_unit: str = None
+    per_unit_quantity: str = None
     nutrients: List[NutrientAndQuantity] = Field([])
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -124,6 +127,8 @@ class CreateFoodItemDto(BaseModel):
 class UpdateFoodItemDto(BaseModel):
     description: str | None
     names: List[Name] | None = Field([])
+    measuring_unit: str = None
+    per_unit_quantity: str = None
     nutrients: List[NutrientHydratedAndQuantity] | None = Field([])
     updated_at: datetime | None = Field(datetime.now())
 
@@ -148,3 +153,4 @@ class UpdateFoodItemDto(BaseModel):
             },
         },
     }
+  

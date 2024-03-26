@@ -16,6 +16,10 @@ from .auth.auth_controller import router as AuthRouter
 from .recipe_unit_scheme.recipe_unit_scheme_controller import router as RecipeUnitSchemRouter
 from .recipe_quantity.recipe_quantity_controller import router as RecipeQuantity
 from .food_item.food_item_controller import router as FoodItemRouter
+from .dish.dish_controller import router as DishRouter
+from .factor_category.factor_category_controller import router as FactorCategoryRouter
+from .factor.factor_controller import router as FactorRouter
+from .factor_score.factor_score_controller import router as FactorScoreRouter
 from .config import settings
 from .common.enums import Tag
 from .common.strawberry_core import get_context
@@ -71,7 +75,17 @@ def create_rest_application() -> FastAPI:
     app.include_router(LanguageRouter, prefix='/languages',
                        tags=[Tag.LANGUAGE])
     app.include_router(FoodItemRouter,
-                       prefix='/food_items', tags=[Tag.FOOD_ITEM])
+                       prefix='/food_items', tags=[Tag.FOOD_ITEM])    
+    app.include_router(DishRouter,
+                       prefix='/dishes', tags=[Tag.DISH])    
+    app.include_router(FactorCategoryRouter,
+                       prefix='/factor_category', tags=[Tag.FACTOR_CATEGORY])
+    app.include_router(FactorRouter,
+                       prefix='/factor', tags=[Tag.FACTOR])
+    app.include_router(FactorScoreRouter,
+                       prefix='/factor_score', tags=[Tag.FACTOR_SCORE])
+    
+
     
     app.add_event_handler("startup", initialize_database)
 

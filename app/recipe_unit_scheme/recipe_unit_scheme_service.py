@@ -23,7 +23,7 @@ async def add_recipe_unit_scheme(database: AsyncIOMotorDatabase, data: dict) -> 
 # Update a recipe_unit_scheme with a matching ID
 
 
-async def update_recipe_unit_scheme(id: str, data: dict):
+async def update_recipe_unit_scheme(database: AsyncIOMotorDatabase, id: str, data: dict):
     # Return false if an empty request body is sent.
     if len(data) < 1:
         return False

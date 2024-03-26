@@ -76,6 +76,18 @@ async def initialize_database() -> AsyncIOMotorDatabase:
     recipe_quantity_collection = get_recipe_quantity_collection(database)
     await recipe_quantity_collection.create_index('name')
 
+    dish_collection = get_dish_collection(database)
+    await dish_collection.create_index('name')
+
+    factor_category_collection = get_factor_category_collection(database)
+    await factor_category_collection.create_index('name')
+
+    factor_collection = get_factor_collection(database)
+    await factor_collection.create_index('name')
+
+    factor_score_collection = get_factor_score_collection(database)
+    await factor_score_collection.create_index('name')
+
 
     print('Connection Opened')
 
@@ -138,3 +150,15 @@ def get_recipe_unit_scheme_collection(database: AsyncIOMotorDatabase) -> AsyncIO
 
 def get_recipe_quantity_collection(database: AsyncIOMotorDatabase) -> AsyncIOMotorCollection:
     return database.get_collection("recipe_quantities")
+
+def get_dish_collection(database: AsyncIOMotorDatabase) -> AsyncIOMotorCollection:
+    return database.get_collection("dishes")
+
+def get_factor_category_collection(database: AsyncIOMotorDatabase) -> AsyncIOMotorCollection:
+    return database.get_collection("factor_category")
+
+def get_factor_collection(database: AsyncIOMotorDatabase) -> AsyncIOMotorCollection:
+    return database.get_collection("factor")
+
+def get_factor_score_collection(database: AsyncIOMotorDatabase) -> AsyncIOMotorCollection:
+    return database.get_collection("factor_score")

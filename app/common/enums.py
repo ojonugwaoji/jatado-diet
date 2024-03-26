@@ -15,6 +15,10 @@ class Tag(str, Enum):
     LANGUAGE = 'Language'
     NUTRIENT = 'Nutrients'
     FOOD_ITEM = 'Food Item'
+    DISH = "Dishes"
+    FACTOR_CATEGORY = "Factor Category"
+    FACTOR = "Factor"
+    FACTOR_SCORE = "Factor Score"
 
 
 class Environment(str, Enum):
