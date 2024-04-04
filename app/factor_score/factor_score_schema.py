@@ -1,20 +1,26 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
+from typing import Optional
 from ..common.types import PyObjectId
+from bson import ObjectId
 
 
 class FactorScoreSchema(BaseModel):
     id: PyObjectId = Field(alias='_id')
-    name: str = Field(...)
-    description: str = Field(None)
+    description: str | None
+    factor_id: str | None
+    item_id: Optional[str] = None
+    score: int | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
     model_config = {
         "json_schema_extra": {
             "example": {
-                "name": "Disease",
-                "description": "Health condition",
+                "description": "Health condition",         
+                "factor_id": str(ObjectId()),
+                "item_id": str(ObjectId()),
+                "score": "2",
                 "created_at": str(datetime.now()),
                 "updated_at": str(datetime.now())
             }
@@ -24,16 +30,20 @@ class FactorScoreSchema(BaseModel):
 
 
 class CreateFactorScoreDto(BaseModel):
-    name: str = Field(...)
     description: str | None
+    factor_id: str | None
+    item_id: str | None
+    score: int | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
 
     model_config = {
         "json_schema_extra": {
             "example": {
-                "name": "Disease",
-                "description": "Health condition",
+                "description": "Health condition",         
+                "factor_id": str(ObjectId()),
+                "item_id": str(ObjectId()),
+                "score": "2",
                 "created_at": str(datetime.now()),
                 "updated_at": str(datetime.now())
             }
@@ -42,15 +52,19 @@ class CreateFactorScoreDto(BaseModel):
 
 
 class UpdateFactorScoreDto(BaseModel):
-    name: str | None = Field(None)
     description: str | None = Field(None)
+    factor_id: str | None
+    item_id: str | None
+    score: int | None
     updated_at: datetime | None = Field(datetime.now())
 
     model_config = {
         "json_schema_extra": {
             "example": {
-                "name": "Disease",
-                "description": "Health condition",
+                "description": "Health condition", 
+                "factor_id": str(ObjectId()),
+                "item_id": str(ObjectId()),
+                "score": "2"
             }
         }
     }

@@ -1,11 +1,13 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
 from ..common.types import PyObjectId
+from typing import List
+from ..common.schema import Name
 
 
 class FactorCategorySchema(BaseModel):
     id: PyObjectId = Field(alias='_id')
-    name: str = Field(...)
+    names: List[Name] = Field([])
     description: str = Field(None)
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -24,7 +26,7 @@ class FactorCategorySchema(BaseModel):
 
 
 class CreateFactorCategoryDto(BaseModel):
-    name: str = Field(...)
+    names: List[Name] = Field([])
     description: str | None
     created_at: datetime | None = Field(datetime.now())
     updated_at: datetime | None = Field(datetime.now())
@@ -42,7 +44,7 @@ class CreateFactorCategoryDto(BaseModel):
 
 
 class UpdateFactorCategoryDto(BaseModel):
-    name: str | None = Field(None)
+    names: List[Name] = Field([])
     description: str | None = Field(None)
     updated_at: datetime | None = Field(datetime.now())
 
